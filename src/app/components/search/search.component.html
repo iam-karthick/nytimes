@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <h1 class="fonts text-center"><b> THE NEWYORK TIMES</b></h1>    
+        <nav>
+            <ul class="nav nav-justified">
+              <li class="active"><a href="#" (click)="newsUser()" >Home</a></li>
+              <li><a href="https://www.nytimes.com/">About</a></li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">section   <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="na">North America</a></li>
+                <li><a href="sa">South America</a></li>
+                <li><a href="eu">Europe</a></li>
+                <li><a href="af">Africa</a></li>
+                <li><a href="as">Asia</a></li>
+                <li><a href="au">Australia</a></li>
+                <li><a href="an">Antarctica</a></li>                                                
+            </ul>
+            </li>
+            <li><a href="http://www.nytimes.com/help/index.html?action=click&region=TopBar&WT.nav=user-settings-modalContainer&content">Contact</a></li>            
+            </ul>
+        </nav>
+    <div *ngIf="newsuser">
+        <p> {{ newsuser.copyright }} </p>
+        <p>{{newsuser.response}}</p>
+    </div>
+    <div *ngFor="let doc of docs">
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <h4><span class="label label-info">headline</span><i>{{doc.headline.main}}</i></h4>
+                <p><span class="label label-default">Published</span>: {{doc.pub_date | date:'dd/MM/yy'}}</p> 
+                <h5>{{ doc.headline.main}}</h5>                
+                <p>{{doc.document_type}}: {{doc.snippet}}</p>
+                <a href="{{doc.web_url}}">full story</a>   
+                <p>rank:{{ doc.keywords.rank || "N/A" }}</p>
+                <p>category:{{doc.new_desk}}</p>
+                <p><span class="label label-success">Type</span>:{{doc.section_name || "N/A"}}</p>
+                <p><span class="label label-success">count</span>: {{doc.word_count}}</p>           
+                <div *ngIf="doc.multimedia[0]">
+                    <img src="http://www.nytimes.com/{{doc.multimedia[0]}}" alt="N/A">
+                </div>     
+            </div>     
+        </div>            
+    </div>
+</div>    
+
