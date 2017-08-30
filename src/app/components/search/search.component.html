@@ -35,8 +35,8 @@
                 <p>category:{{doc.new_desk}}</p>
                 <p><span class="label label-success">Type</span>:{{doc.section_name || "N/A"}}</p>
                 <p><span class="label label-success">count</span>: {{doc.word_count}}</p>           
-                <div *ngIf="doc.multimedia[0]">
-                    <img src="http://www.nytimes.com/{{doc.multimedia[0]}}" alt="N/A">
+                <div *ngFor="let media of doc.multimedia">
+                    <img src="http://www.nytimes.com/{{media.url}}" alt="N/A">
                 </div>     
             </div>     
         </div>            
